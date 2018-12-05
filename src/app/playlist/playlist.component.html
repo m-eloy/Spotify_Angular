@@ -1,0 +1,38 @@
+<mat-card class="mat-card-vignette">
+  <h1>Vos Playlists</h1>
+  <mat-grid-list cols="3" *ngIf="playlists">
+    <mat-grid-tile *ngFor="let playlist of playlists let i=index">
+      <mat-card class="vignette">
+        <mat-card-header>
+          <a [routerLink]="['/playlist' , playlist.id]">
+            <mat-card-title>{{ playlist.name }} </mat-card-title>
+          </a>
+        </mat-card-header>
+        <a [routerLink]="['/playlist' , playlist.id]">
+          <img *ngIf="playlist.images!=0" src="{{ playlist.images[0].url }}" class="imgVignette">
+        </a>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</mat-card>
+
+<mat-card>
+    <h3>Créer une playlist</h3>
+    <form #idform="ngForm" (ngSubmit)="creerPlaylist(idform.value.name, idform.value.description, idform.value.isPublic); idform.reset()">
+      <mat-form-field>
+        <input matInput placeholder="Name" ngModel name="name" required>
+      </mat-form-field>
+  
+      <mat-form-field>
+        <textarea matInput placeholder="Description" ngModel name="description" required></textarea>
+      </mat-form-field><br>
+  
+        <label>Visibilité de votre playlist: </label> <br>
+        <mat-radio-group ngModel name="isPublic" required>
+          <mat-radio-button value=true>Public</mat-radio-button>
+          <mat-radio-button value=false>Private</mat-radio-button>
+        </mat-radio-group>
+        <br>
+        <button mat-raised-button type="submit" color="primary" [disabled]="!idform.valid">Ajouter Playlist</button>
+    </form>
+  </mat-card>

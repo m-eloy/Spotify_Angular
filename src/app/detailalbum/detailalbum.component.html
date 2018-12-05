@@ -1,0 +1,18 @@
+<mat-card id="unAlbum" *ngIf="album">
+    <h2>{{ album.name }}</h2>
+    <img src="{{ album.images[1].url }}" width="200px">
+
+    <div class="listepreview">
+      <ul *ngFor="let song of album.tracks.items let i=index">
+        <ng-container >
+          <li>
+              <a [routerLink]="['/ajoutplaylist' , song.uri]">
+                <button mat-mini-fab class="buttonIcon" color="primary"><mat-icon>add</mat-icon></button>
+              </a>
+            {{ song.track_number }}. {{ song.name }} ({{ song.duration_ms | date:'mm:ss' }})
+            <audio *ngIf="song.preview_url!=null" id=”AudioSong” controls [src]="song.preview_url">pas supporté</audio>
+          </li>
+        </ng-container>
+      </ul>
+  </div>
+</mat-card>

@@ -1,0 +1,23 @@
+<mat-card>
+  <h1>Rechercher un artiste</h1>
+  <form #idform="ngForm" (ngSubmit)="chercherChanteurs(idform.value.mot); idform.reset()">
+    <mat-form-field>
+      <input matInput placeholder="Mot Clé" ngModel name="mot" required>
+    </mat-form-field>
+    <br>
+    <button mat-raised-button type="submit" color="primary" [disabled]="!idform.valid">Chercher Chanteur</button>
+  </form>
+</mat-card>
+
+<mat-card class="mat-card-vignette" >
+  <mat-grid-list cols="3">
+    <mat-grid-tile *ngFor="let chanteur of chanteurs let i=index">
+      <mat-card class="vignette">
+        <mat-card-header>
+          <mat-card-title>{{ chanteur.name }} </mat-card-title>
+        </mat-card-header>
+        <img *ngIf="chanteur.images!=0" src="{{chanteur.images[2].url}}" class="imgVignette" >
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</mat-card>

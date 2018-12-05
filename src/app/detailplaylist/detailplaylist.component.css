@@ -1,0 +1,33 @@
+.listepreview { 
+    max-height: 280px;
+    overflow: auto;
+}
+
+#unePlaylist{
+    padding: 1em;
+}
+
+ul {
+    list-style: none;
+}
+    
+
+.editPlaylistButton{
+    padding: 0;
+    margin: 0 0 0 0.4em;
+}
+
+.buttonIcon{
+    padding: 0;
+    margin: 0 0 0 0.8em;
+    height: 2em;
+    width: 2em;
+}
+
+mat-icon{
+    height: 2em;
+}
+
+.mat-icon-list{
+    font-size: 1em;
+}

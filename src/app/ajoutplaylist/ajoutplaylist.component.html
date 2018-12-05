@@ -1,0 +1,10 @@
+<mat-card>
+    <form #idform="ngForm" (ngSubmit)="ajoutChanson(idform.value.playlist); idform.reset()">
+        <label>Choisir la playlist où vous voulez ajouter cette chanson:</label> <br>
+        <mat-radio-group ngModel name="playlist" required>
+          <mat-radio-button *ngFor="let playlist of playlists let i=index" [value]="playlist">{{ playlist.name }}</mat-radio-button><br>
+        </mat-radio-group>
+        <br>
+        <button mat-raised-button type="submit" color="primary" [disabled]="!idform.valid">Ajouter à la playlist</button>
+    </form>
+  </mat-card>

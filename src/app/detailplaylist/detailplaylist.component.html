@@ -1,0 +1,26 @@
+<mat-card id="unePlaylist" *ngIf="playlist">
+  <h2>{{ playlist.name }}</h2>
+  <p>{{ playlist.description }} 
+    (<span *ngIf="playlist.public">Playlist public</span><span *ngIf="!playlist.public">Playlist privée</span>)
+  </p>
+
+  <img src="{{ playlist.images[0].url }}" width="200px">
+  <a [routerLink]="['/modificationplaylist' , playlist.id]">
+    <button mat-mini-fab class="editPlaylistButton" color="primary"><mat-icon>edit</mat-icon></button>
+  </a>
+  <br>
+
+  <div class="listepreview">
+    <ul *ngFor="let song of playlist.tracks.items let i=index, let tr">
+      <ng-container>
+        <li>
+            {{ i + 1 }}. {{ song.track.name }} - <span *ngFor="let artist of song.track.artists">{{ artist.name }} </span> (album: {{song.track.album.name}}) - {{ song.track.duration_ms | date:'mm:ss' }}
+          <audio *ngIf="song.track.preview_url!=null" id=”AudioSong” controls [src]="song.track.preview_url">pas supporté</audio> 
+          <button mat-mini-fab class="buttonIcon" color="primary" (click)="delete(tr.track.uri, i)"><mat-icon class="mat-icon-list">delete</mat-icon></button>
+          <button mat-mini-fab class="buttonIcon" color="primary" (click)="changeOrder(i, -1, playlist.tracks.total)"><mat-icon class="mat-icon-list">keyboard_arrow_up</mat-icon></button>
+          <button mat-mini-fab class="buttonIcon" color="primary" (click)="changeOrder(i, 2, playlist.tracks.total)"><mat-icon class="mat-icon-list">keyboard_arrow_down</mat-icon></button>
+        </li>
+      </ng-container>
+    </ul>
+  </div>
+</mat-card>

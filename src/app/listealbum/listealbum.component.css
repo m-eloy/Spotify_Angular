@@ -1,0 +1,21 @@
+.mat-card-vignette {
+    overflow: auto;
+    height: 400px;
+}
+
+.vignette {
+    max-width: 180px;
+    text-align: center;
+}
+
+mat-card-header {
+    justify-content: center;
+}
+    
+.imgVignette {
+    width: 150px;
+}
+
+a {
+    text-decoration: none;
+}

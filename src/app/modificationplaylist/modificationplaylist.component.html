@@ -1,0 +1,21 @@
+<mat-card *ngIf="playlist">
+    <h3>Modifier playlist</h3>
+    <form #idform="ngForm" (ngSubmit)="modifierPlaylist(idform.value.name, idform.value.description, idform.value.isPublic); idform.reset()">
+      <mat-form-field>
+        <input matInput placeholder="Name" ngModel name="name" value="playlist.name" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <textarea matInput placeholder="Description" ngModel name="description" [value]="playlist.description" required></textarea>
+      </mat-form-field><br>
+
+        <label>Visibilité de votre playlist: </label> <br>
+        <mat-radio-group ngModel name="isPublic" required>
+          <mat-radio-button value="true">Public</mat-radio-button>
+          <mat-radio-button value="false">Private</mat-radio-button>
+        </mat-radio-group>
+        <br>
+
+        <button mat-raised-button type="submit" color="primary" [disabled]="!idform.valid">Modifier Playlist</button>
+    </form>
+</mat-card>

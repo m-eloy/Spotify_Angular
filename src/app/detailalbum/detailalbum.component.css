@@ -1,0 +1,21 @@
+.listepreview { 
+    max-height: 280px;
+    overflow: auto;
+}
+
+#unAlbum{
+    padding: 1em;
+}
+
+ul {
+    list-style: none;
+}
+
+.buttonIcon{
+    padding: 0;
+    margin: 0 2em 0 0;
+}
+
+mat-icon{
+    height: 2em;
+}
